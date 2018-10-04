@@ -32,10 +32,13 @@ def check(mac):
 def main():
     while True:
         user_input = input("Check mac address: ")
-        if not user_input: continue
+        if not user_input:
+            continue
 
-        if user_input in 'eE': exit()
-        if user_input in 'clipboard': clipboard()
+        if user_input in 'eE':
+            exit()
+        if user_input in 'clipboard':
+            clipboard()
 
         for address in user_input.strip().replace(' ', '').split(','):
             if not check(address):
@@ -52,11 +55,13 @@ def clipboard():
     # If there's any addresses check for them.
     if reResults:
         for i in reResults:
-            if ':' not in i: continue
+            if ':' not in i:
+                continue
 
             # Check if the address is unknown
             if not check(i):
                 print('-', Fore.RED + i + Fore.RESET)
+
 
 try:
     current_path = path.dirname(path.realpath(__file__)) + "/maclist.txt"
